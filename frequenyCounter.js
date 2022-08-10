@@ -1,25 +1,28 @@
 // Time Complexity -> O(n)
 const same = (arr1, arr2) => {
+  // 두개의 배열의 길이가 다르면 false
+  // 각 객체에 키와 총 갯수를 설정함
+  // 하나의 객체 for in 문을 돌려 각각 제곱과 갯수가 일치하는지 확인
+
   if (arr1.length !== arr2.length) return false;
-  let frequencyCounter1 = {};
-  let frequencyCounter2 = {};
+
+  const frequencyObj1 = {};
+  const frequencyObj2 = {};
 
   for (const val of arr1) {
-    frequencyCounter1[val] = (frequencyCounter1[val] || 0) + 1;
+    frequencyObj1[val] = (frequencyObj1[val] || 0) + 1;
   }
 
   for (const val of arr2) {
-    frequencyCounter2[val] = (frequencyCounter2[val] || 0) + 1;
+    frequencyObj2[val] = (frequencyObj2[val] || 0) + 1;
   }
 
-  for (let key in frequencyCounter1) {
-    if (!(key ** 2 in frequencyCounter2)) {
-      return false;
-    }
-    if (frequencyCounter2[key ** 2] !== frequencyCounter1[key]) {
-      return false;
-    }
+  for (const key in frequencyObj1) {
+    if (!(key ** 2 in frequencyObj2)) return false;
+
+    if (frequencyObj1[key] !== frequencyObj2[key ** 2]) return false;
   }
+
   return true;
 };
 
