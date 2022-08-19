@@ -57,14 +57,29 @@ class SingleLinkedList {
       this.tail = null;
     }
   }
+
+  unShift(val) {
+    const newNode = new Node(val);
+
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+      this.length += 1;
+      return;
+    }
+    newNode.next = this.head;
+    this.head = newNode;
+    this.length += 1;
+  }
 }
 
 const linkedList = new SingleLinkedList();
 linkedList.push(3);
 linkedList.push(5);
-linkedList.push(15);
-linkedList.shift();
-linkedList.shift();
-linkedList.shift();
+linkedList.unShift(15);
+linkedList.unShift(35);
 
 console.log(linkedList.head);
+console.log(linkedList.head.next);
+console.log(linkedList.head.next.next);
+console.log(linkedList.head.next.next.next);
