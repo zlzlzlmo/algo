@@ -71,6 +71,24 @@ class SingleLinkedList {
     this.head = newNode;
     this.length += 1;
   }
+
+  get(idx) {
+    if (!this.head || idx > this.length - 1 || idx < 0) return;
+    if (idx === 0) return this.head;
+
+    let currentIndex = 0;
+    let currentNode = this.head;
+
+    while (currentNode.next) {
+      currentIndex += 1;
+      currentNode = currentNode.next;
+      if (idx === currentIndex) {
+        break;
+      }
+    }
+
+    return currentNode;
+  }
 }
 
 const linkedList = new SingleLinkedList();
@@ -79,7 +97,4 @@ linkedList.push(5);
 linkedList.unShift(15);
 linkedList.unShift(35);
 
-console.log(linkedList.head);
-console.log(linkedList.head.next);
-console.log(linkedList.head.next.next);
-console.log(linkedList.head.next.next.next);
+console.log(linkedList.get(3));
