@@ -30,7 +30,7 @@ class SingleLinkedList {
     if (!this.head) return;
 
     let currentNode = this.head;
-    let prevNode = this.head;
+    let prevNode = currentNode;
 
     while (currentNode.next) {
       prevNode = currentNode;
@@ -46,14 +46,25 @@ class SingleLinkedList {
       this.tail = null;
     }
   }
+
+  shift() {
+    if (!this.head) return;
+
+    this.head = this.head.next;
+    this.length -= 1;
+
+    if (this.length === 0) {
+      this.tail = null;
+    }
+  }
 }
 
 const linkedList = new SingleLinkedList();
 linkedList.push(3);
 linkedList.push(5);
 linkedList.push(15);
-linkedList.pop();
-linkedList.pop();
-linkedList.pop();
+linkedList.shift();
+linkedList.shift();
+linkedList.shift();
 
-console.log(linkedList);
+console.log(linkedList.head);
