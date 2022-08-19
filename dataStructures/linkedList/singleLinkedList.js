@@ -89,6 +89,13 @@ class SingleLinkedList {
 
     return currentNode;
   }
+
+  update(idx, val) {
+    const node = this.get(idx);
+    if (!node) return false;
+
+    node.val = val;
+  }
 }
 
 const linkedList = new SingleLinkedList();
@@ -96,5 +103,6 @@ linkedList.push(3);
 linkedList.push(5);
 linkedList.unShift(15);
 linkedList.unShift(35);
+linkedList.update(1, "dfadas");
 
-console.log(linkedList.get(3));
+console.log(linkedList.head.next);
