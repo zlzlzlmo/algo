@@ -92,9 +92,32 @@ class SingleLinkedList {
 
   update(idx, val) {
     const node = this.get(idx);
-    if (!node) return false;
+    if (!node) return;
 
     node.val = val;
+  }
+
+  insert(idx, val) {
+    if (idx < 0 || idx > this.length) return;
+
+    if (idx === this.length) {
+      this.push(val);
+      return;
+    }
+
+    if (idx === 0) {
+      this.unShift(val);
+      return;
+    }
+
+    const newNode = new Node(val);
+
+    const prevNode = this.get(idx - 1);
+    const nextNode = this.get(idx);
+
+    prevNode.next = newNode;
+    newNode.next = nextNode;
+    this.length += 1;
   }
 }
 
@@ -103,6 +126,6 @@ linkedList.push(3);
 linkedList.push(5);
 linkedList.unShift(15);
 linkedList.unShift(35);
-linkedList.update(1, "dfadas");
+linkedList.insert(4, "dfadas");
 
-console.log(linkedList.head.next);
+console.log(linkedList.head.next.next.next.next);
