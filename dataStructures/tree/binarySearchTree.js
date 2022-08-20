@@ -86,6 +86,22 @@ class BinarySearchTree {
 
     return visited;
   }
+
+  dfsPostOrder() {
+    const rootNode = this.root;
+    if (!rootNode) return;
+    const visited = [];
+
+    traverse(rootNode);
+
+    function traverse(node) {
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+      visited.push(node.val);
+    }
+
+    return visited;
+  }
 }
 
 const tree = new BinarySearchTree();
@@ -96,4 +112,4 @@ tree.insert(6);
 tree.insert(3);
 tree.insert(20);
 tree.insert(8);
-console.log(tree.dfsPreOrder());
+console.log(tree.dfsPostOrder());
