@@ -134,6 +134,26 @@ class DoublyLinkedList {
     this.length += 1;
   }
 
+  remove(idx) {
+    if (idx < 0 || idx > this.length - 1) return;
+    if (idx === 0) {
+      this.shift();
+      return;
+    }
+
+    if (idx === this.length - 1) {
+      this.pop();
+      return;
+    }
+
+    const prev = this.get(idx - 1);
+    const next = this.get(idx + 1);
+
+    prev.next = next;
+    next.prev = prev;
+    this.length -= 1;
+  }
+
   print() {
     if (this.length === 0) return;
     let current = this.head;
@@ -155,4 +175,5 @@ list.unShift(35);
 list.set(2, 1000);
 list.insert(3, 10000);
 list.insert(1, 1123);
+list.remove(0);
 console.log(list.print());
