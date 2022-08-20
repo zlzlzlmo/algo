@@ -60,6 +60,7 @@ class DoublyLinkedList {
     const shifted = this.head;
 
     this.head = shifted.next;
+    this.head.prev = null;
     this.length -= 1;
   }
 
