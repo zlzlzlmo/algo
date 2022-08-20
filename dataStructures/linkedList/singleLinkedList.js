@@ -119,6 +119,27 @@ class SingleLinkedList {
     newNode.next = nextNode;
     this.length += 1;
   }
+
+  remove(idx) {
+    if (!this.head || idx < 0 || idx >= this.length) return;
+
+    if (idx === 0) {
+      this.head = this.head.next;
+      this.length -= 1;
+      return;
+    }
+
+    if (idx === this.length - 1) {
+      this.pop();
+      return;
+    }
+
+    const prevNode = this.get(idx - 1);
+    const nextNode = this.get(idx + 1);
+
+    prevNode.next = nextNode;
+    this.length -= 1;
+  }
 }
 
 const linkedList = new SingleLinkedList();
@@ -126,6 +147,5 @@ linkedList.push(3);
 linkedList.push(5);
 linkedList.unShift(15);
 linkedList.unShift(35);
-linkedList.insert(4, "dfadas");
-
-console.log(linkedList.head.next.next.next.next);
+linkedList.remove(3);
+console.log(linkedList.tail);
