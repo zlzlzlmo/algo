@@ -153,6 +153,12 @@ class SingleLinkedList {
     }
   }
 
+  reverse() {
+    const node = this.head;
+    this.head = this.tail;
+    this.tail = node;
+  }
+
   print() {
     const arr = [];
     let current = this.head;
