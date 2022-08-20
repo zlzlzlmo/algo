@@ -17,11 +17,18 @@ class MaxBinaryHeap {
       const current = this.values[idx];
 
       if (current > parent) {
-        this.values[parentIdx] = current;
-        this.values[idx] = parent;
+        this.swap(parentIdx, idx);
         idx = parentIdx;
       }
     }
+  }
+
+  swap(firstIdx, secondIdx) {
+    const first = this.values[firstIdx];
+    const second = this.values[secondIdx];
+
+    this.values[firstIdx] = second;
+    this.values[secondIdx] = first;
   }
 }
 
