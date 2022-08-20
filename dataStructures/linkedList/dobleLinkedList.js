@@ -106,6 +106,14 @@ class DoublyLinkedList {
     return current;
   }
 
+  set(idx, val) {
+    if (this.length === 0) return;
+    const founded = this.get(idx);
+    if (!founded) return;
+
+    founded.val = val;
+  }
+
   print() {
     if (this.length === 0) return;
     let current = this.head;
@@ -125,4 +133,5 @@ list.unShift(1);
 list.unShift(15);
 list.unShift(35);
 
-console.log(list.get(2));
+console.log(list.set(2, 1000));
+console.log(list.print());
