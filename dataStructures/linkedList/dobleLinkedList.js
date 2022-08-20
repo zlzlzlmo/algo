@@ -34,6 +34,7 @@ class DoublyLinkedList {
     if (this.length === 1) {
       this.head = null;
       this.tail = null;
+      this.length -= 1;
       return;
     }
 
@@ -44,16 +45,44 @@ class DoublyLinkedList {
     popped.prev = null;
     this.length -= 1;
   }
+
+  shift() {
+    if (!this.head) return;
+
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+      this.length -= 1;
+
+      return;
+    }
+
+    const shifted = this.head;
+
+    this.head = shifted.next;
+    this.length -= 1;
+  }
+
+  print() {
+    if (this.length === 0) return;
+    let current = this.head;
+    const result = [current.val];
+    while (current.next) {
+      current = current.next;
+      result.push(current.val);
+    }
+
+    return result;
+  }
 }
 
 const list = new DoublyLinkedList();
 list.push(1);
 list.push(10);
 list.push(15);
-list.push(45);
-list.pop();
-list.pop();
-list.pop();
-list.pop();
+list.shift();
+list.shift();
+list.shift();
+list.shift();
 
-console.log(list.tail);
+console.log(list.print());
