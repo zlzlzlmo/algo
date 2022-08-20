@@ -140,6 +140,29 @@ class SingleLinkedList {
     prevNode.next = nextNode;
     this.length -= 1;
   }
+
+  reverse() {
+    const currentHead = this.head;
+    this.head = this.tail;
+    this.tail = currentHead;
+
+    let current = this.head;
+
+    while (current.next) {
+      // current.next =
+    }
+  }
+
+  print() {
+    const arr = [];
+    let current = this.head;
+    while (current) {
+      arr.push(current.val);
+      current = current.next;
+    }
+
+    return arr;
+  }
 }
 
 const linkedList = new SingleLinkedList();
@@ -147,5 +170,4 @@ linkedList.push(3);
 linkedList.push(5);
 linkedList.unShift(15);
 linkedList.unShift(35);
-linkedList.remove(3);
-console.log(linkedList.tail);
+console.log(linkedList.print());
