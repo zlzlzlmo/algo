@@ -40,6 +40,46 @@ class PriorityQueue {
     this.values[firstIdx] = currentNode;
     this.values[secondIdx] = parentNode;
   }
+
+  dequeue() {
+    const max = this.values[0];
+    const popped = this.values.pop();
+
+    this.values[0] = popped;
+    let currentIdx = 0;
+
+    while (true) {
+      let leftChildIdx = 2 * currentIdx + 1;
+      let rightChildIdx = 2 * currentIdx + 2;
+
+      let currentNode = this.values[currentIdx];
+      let leftNode = this.values[leftChildIdx];
+      let rightNode = this.values[rightChildIdx];
+
+      let swapIdx = null;
+
+      if (leftChildIdx < this.values.length) {
+        if (leftNode.priority > currentNode.priority) {
+          swapIdx = leftChildIdx;
+        }
+      }
+
+      if (rightChildIdx < this.values.length) {
+        if (
+          (!swapIdx && rightNode.priority > currentNode.priority) ||
+          (swapIdx && rightNode.priority > leftNode.priority)
+        ) {
+          swapIdx = rightChildIdx;
+        }
+      }
+
+      if (!swapIdx) break;
+      this.swap(currentIdx, swapIdx);
+      currentIdx = swapIdx;
+    }
+
+    return max;
+  }
 }
 
 const ER = new PriorityQueue();
@@ -48,7 +88,9 @@ ER.enqueue("코로나", 5);
 ER.enqueue("암", 100);
 ER.enqueue("독감", 3);
 ER.enqueue("심장마비", 20000);
-// ER.enqueue("맹장 터짐", 7);
-// ER.enqueue("독감", 3);
-
+ER.enqueue("맹장 터짐", 7);
+ER.dequeue();
+ER.dequeue();
+ER.dequeue();
+ER.dequeue();
 console.log(ER.values);
