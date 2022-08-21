@@ -46,6 +46,11 @@ class PriorityQueue {
     const popped = this.values.pop();
 
     this.values[0] = popped;
+    this.sinkDown();
+    return max;
+  }
+
+  sinkDown() {
     let currentIdx = 0;
 
     while (true) {
@@ -77,8 +82,6 @@ class PriorityQueue {
       this.swap(currentIdx, swapIdx);
       currentIdx = swapIdx;
     }
-
-    return max;
   }
 }
 
