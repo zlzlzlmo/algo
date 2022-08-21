@@ -40,9 +40,7 @@ class Graph {
     const result = [];
     const visited = {};
 
-    const recur = recursive.bind(this, start);
-
-    recur(start);
+    recursive.call(this, start);
 
     function recursive(start) {
       visited[start] = true;
@@ -50,12 +48,33 @@ class Graph {
 
       this.adjacencyList[start].forEach((v) => {
         if (!visited[v]) {
-          const recur = recursive.bind(this, v);
-          recur();
+          recursive.call(this, v);
         }
       });
     }
 
+    return result;
+  }
+
+  bfs(start) {
+    const queue = [start];
+    const visited = {
+      [start]: true,
+    };
+    const result = [];
+
+    while (queue.length) {
+      const shiftted = queue.shift();
+
+      result.push(shiftted);
+
+      this.adjacencyList[shiftted].forEach((v) => {
+        if (!visited[v]) {
+          visited[v] = true;
+          queue.push(v);
+        }
+      });
+    }
     return result;
   }
 }
@@ -77,4 +96,4 @@ g.addEdge("D", "E");
 g.addEdge("D", "F");
 g.addEdge("E", "F");
 
-console.log(g.dfsR("A"));
+console.log(g.bfs("A"));
