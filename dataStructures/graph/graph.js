@@ -27,6 +27,14 @@ class Graph {
     this.adjacencyList[vertex].splice(idx1, 1);
     this.adjacencyList[vertex2].splice(idx2, 1);
   }
+
+  removeVertex(vertex) {
+    this.adjacencyList[vertex].forEach((v) => {
+      this.removeEdge(v, vertex);
+    });
+
+    delete this.adjacencyList[vertex];
+  }
 }
 
 const graph = new Graph();
@@ -36,5 +44,5 @@ graph.addVertex("Dallas");
 graph.addVertex("Aspen");
 graph.addEdge("Tokyo", "Dallas");
 graph.addEdge("Dallas", "Aspen");
-graph.removeEdge("Dallas", "Aspen");
+graph.removeVertex("Tokyo");
 console.log(graph.adjacencyList);
