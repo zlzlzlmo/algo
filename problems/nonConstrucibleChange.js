@@ -17,3 +17,6 @@ function nonConstructibleChange(coins) {
 }
 
 console.log(nonConstructibleChange([5, 7, 1, 1, 2, 3, 22]));
+
+// 1 1 2 3 5 7 22
+// 1 2 4 7 12 19 -> 20
