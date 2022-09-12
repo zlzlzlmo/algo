@@ -1,13 +1,11 @@
 function isValidSubsequence(array, sequence) {
-  const originalLength = sequence.length;
-  let foundedSequence = 0;
-  for (const element of array) {
-    if (element === sequence[0]) {
-      foundedSequence += 1;
-      sequence.splice(0, 1);
-    }
+  let arrayIndex = 0;
+  let sequenceIndex = 0;
 
-    if (foundedSequence === originalLength) return true;
+  while (arrayIndex < array.length) {
+    if (array[arrayIndex] === sequence[sequenceIndex]) sequenceIndex += 1;
+    arrayIndex += 1;
   }
-  return false;
+
+  return sequenceIndex === sequence.length;
 }
