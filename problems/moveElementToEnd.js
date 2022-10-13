@@ -3,11 +3,8 @@ function moveElementToEnd(array, toMove) {
   const secondArray = [];
 
   array.forEach((element) => {
-    if (element === toMove) {
-      secondArray.push(element);
-    } else {
-      firstArray.push(element);
-    }
+    if (element === toMove) secondArray.push(element);
+    else firstArray.push(element);
   });
 
   // 2 1 2 2 2 3 4 2
