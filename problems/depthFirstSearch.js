@@ -16,7 +16,6 @@ class Node {
     const node = this;
 
     traverse(node);
-
     function traverse(node) {
       array.push(node.name);
 
