@@ -7,6 +7,7 @@ function classPhotos(redShirtHeights, blueShirtHeights) {
 
   let isRedTaller = redShirtHeights[0] > blueShirtHeights[0];
 
+  //모든게 트루여야지 true 리턴
   let posibillty = redShirtHeights.every((red, index) => {
     return isRedTaller
       ? red > blueShirtHeights[index]
