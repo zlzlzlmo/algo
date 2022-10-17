@@ -11,9 +11,7 @@ const sumZero = (arr) => {
     const leftEle = arr[leftIndex];
     const rightEle = arr[rightIndex];
 
-    if (leftEle + rightEle === 0) {
-      return [leftEle, rightEle];
-    }
+    if (leftEle + rightEle === 0) return [leftEle, rightEle];
 
     leftIndex += 1;
     rightIndex -= 1;
