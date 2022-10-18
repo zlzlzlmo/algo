@@ -23,11 +23,8 @@ function threeNumberSum(array, targetSum) {
         result.push([currentForValue, leftValue, rightValue]);
         left += 1;
         right -= 1;
-      } else if (currentSum < targetSum) {
-        left += 1;
-      } else if (currentSum > targetSum) {
-        right -= 1;
-      }
+      } else if (currentSum < targetSum) left += 1;
+      else if (currentSum > targetSum) right -= 1;
     }
   }
   return result;
